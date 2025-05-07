@@ -159,7 +159,7 @@ class _ChatbotPopupState extends State<ChatbotPopup> {
                         autofocus: true,
                         focusNode: _focusNode,
                         textInputAction: TextInputAction.none,
-                        maxLines: null,
+                        maxLines: 2,
                         controller: _controller,
                         style: Theme.of(context).textTheme.titleSmall,
                         decoration: InputDecoration(
