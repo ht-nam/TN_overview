@@ -114,11 +114,12 @@ class _ChatbotPopupState extends State<ChatbotPopup> {
                             ? Alignment.centerRight
                             : Alignment.centerLeft,
                         child: Container(
+                            margin: message.isUser ? const EdgeInsets.only(left: 30) : const EdgeInsets.only(right: 30),
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
                                 color: message.isUser
-                                    ? Theme.of(context).colorScheme.primary
-                                    : Theme.of(context).colorScheme.secondary,
+                                    ? Colors.green[500]
+                                    : Colors.green[900],
                                 borderRadius: message.isUser
                                     ? const BorderRadius.only(
                                         topLeft: Radius.circular(20),
@@ -182,14 +183,14 @@ class _ChatbotPopupState extends State<ChatbotPopup> {
                             child: SizedBox(
                               width: 20,
                               height: 20,
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(color: Colors.green,),
                             ),
                           )
                         : Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: GestureDetector(
                               onTap: callGeminiModel,
-                              child: const Icon(Icons.send),
+                              child: const Icon(Icons.send, color: Colors.green,),
                             ),
                           )
                   ],
