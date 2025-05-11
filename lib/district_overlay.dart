@@ -8,19 +8,31 @@ class DistrictOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    // double screenWidth = MediaQuery.of(context).size.width;
+    // double screenHeight = MediaQuery.of(context).size.height;
+    // print("$screenWidth x $screenHeight");
+    //
+    // double minBase = min(screenHeight, screenWidth);
+    // double baseWidth = minBase == screenWidth ? minBase : (minBase / 1430  * 1494);
+    // double baseHeight = minBase == screenHeight ? minBase : (minBase / 1494 * 1430);
+    //
+    // print("r: $baseWidth x $baseHeight");
 
-    double minBase = min(screenHeight, screenWidth);
-    double baseWidth = minBase == screenWidth ? minBase : (minBase / 1430  * 1494);
-    double baseHeight = minBase == screenHeight ? minBase : (minBase / 1494 * 1430);
+    // double baseWidth = 1494;
+    // double baseHeight = 1430;
 
-    double widthRatio = screenWidth / baseWidth;
-    double heightRatio = screenHeight / baseHeight;
+    // double widthRatio = screenWidth / baseWidth;
+    // double heightRatio = screenHeight / baseHeight;
 
     return Positioned.fill(
       child: LayoutBuilder(
         builder: (context, constraints) {
+          final maxWidth = constraints.maxWidth;
+          final maxHeight = constraints.maxHeight;
+          double baseWidth = 1494;
+          double baseHeight = 1430;
+          double widthRatio = maxWidth / baseWidth;
+          double heightRatio = maxHeight / baseHeight;
           return Stack(
             children: [
               _buildDistrictArea(context, constraints, const Offset(0.095, 0.3), widthRatio, heightRatio, 'Di tích quốc gia đặc biệt ATK Định Hoá'),
@@ -45,8 +57,8 @@ class DistrictOverlay extends StatelessWidget {
   }
 
   Widget _buildDistrictArea(BuildContext context, BoxConstraints constraints, Offset position, double withRatio, double heightRatio, String name) {
-    double width = 50 * withRatio;
-    double height = 50 * heightRatio;
+    double width = 100 * withRatio;
+    double height = 100 * heightRatio;
     return Positioned(
       left: position.dx * constraints.maxWidth,
       top: position.dy * constraints.maxHeight,
@@ -62,8 +74,8 @@ class DistrictOverlay extends StatelessWidget {
           child: Container(
             width: width,
             height: height,
-            color: Colors.transparent,
-            child: const Center(child: Icon(Icons.location_on, color: Colors.transparent)),
+            color: Colors.green,
+            child: const Center(child: Icon(Icons.location_on, color: Colors.red)),
           ),
         ),
       ),
