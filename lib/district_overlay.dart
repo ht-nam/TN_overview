@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:tn/chatbot_popup.dart';
 
@@ -8,29 +6,14 @@ class DistrictOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // double screenWidth = MediaQuery.of(context).size.width;
-    // double screenHeight = MediaQuery.of(context).size.height;
-    // print("$screenWidth x $screenHeight");
-    //
-    // double minBase = min(screenHeight, screenWidth);
-    // double baseWidth = minBase == screenWidth ? minBase : (minBase / 1430  * 1494);
-    // double baseHeight = minBase == screenHeight ? minBase : (minBase / 1494 * 1430);
-    //
-    // print("r: $baseWidth x $baseHeight");
-
-    // double baseWidth = 1494;
-    // double baseHeight = 1430;
-
-    // double widthRatio = screenWidth / baseWidth;
-    // double heightRatio = screenHeight / baseHeight;
 
     return Positioned.fill(
       child: LayoutBuilder(
         builder: (context, constraints) {
           final maxWidth = constraints.maxWidth;
           final maxHeight = constraints.maxHeight;
-          double baseWidth = 1494;
-          double baseHeight = 1430;
+          double baseWidth = 2481;
+          double baseHeight = 2363;
           double widthRatio = maxWidth / baseWidth;
           double heightRatio = maxHeight / baseHeight;
           return Stack(
@@ -57,8 +40,8 @@ class DistrictOverlay extends StatelessWidget {
   }
 
   Widget _buildDistrictArea(BuildContext context, BoxConstraints constraints, Offset position, double withRatio, double heightRatio, String name) {
-    double width = 100 * withRatio;
-    double height = 100 * heightRatio;
+    double width = 150 * withRatio;
+    double height = 150 * heightRatio;
     return Positioned(
       left: position.dx * constraints.maxWidth,
       top: position.dy * constraints.maxHeight,
