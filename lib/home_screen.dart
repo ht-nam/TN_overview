@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:video_player/video_player.dart';
 import 'district_overlay.dart';
@@ -21,12 +22,14 @@ class _HomeScreenState extends State<HomeScreen> {
   final _formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final messageController = TextEditingController();
-  final CarouselSliderController _carouselController = CarouselSliderController();
+  final CarouselSliderController _carouselController =
+      CarouselSliderController();
   late VideoPlayerController _videoController;
 
   final List<Map> imageDataList = [
     {
-      'image': 'https://images.vietnamtourism.gov.vn/vn//images/2019/doi-che-tan-cuong-2-1.jpg',
+      'image':
+          'https://images.vietnamtourism.gov.vn/vn//images/2019/doi-che-tan-cuong-2-1.jpg',
       'title': 'Đồi chè Tân Cương',
       'description': 'Khám phá những đồi chè bạt ngàn tại Thái Nguyên.',
       'url': 'https://maps.app.goo.gl/tR3c9scqDby3tmGW9'
@@ -38,34 +41,39 @@ class _HomeScreenState extends State<HomeScreen> {
       'url': 'https://maps.app.goo.gl/fsM7djK1yCXuQkKv8',
     },
     {
-      'image': 'https://bvhttdl.mediacdn.vn/291773308735864832/2023/4/28/fbc84adbcff810a649e9-1682670216807401299002.jpg',
+      'image':
+          'https://bvhttdl.mediacdn.vn/291773308735864832/2023/4/28/fbc84adbcff810a649e9-1682670216807401299002.jpg',
       'title': 'Bảo tàng các dân tộc Việt Nam',
       'description': 'Nơi lưu giữ bản sắc văn hóa dân tộc.',
       'url': 'https://maps.app.goo.gl/XffFht99KKwhVM5u6',
     },
-
     {
-      'image': 'https://bvhttdl.mediacdn.vn/291773308735864832/2022/9/13/img1892-1636508813005-16365088220081764330763-1663034153291-16630341538451650438904.jpg',
+      'image':
+          'https://bvhttdl.mediacdn.vn/291773308735864832/2022/9/13/img1892-1636508813005-16365088220081764330763-1663034153291-16630341538451650438904.jpg',
       'title': 'Di tích quốc gia đặc biệt ATK Định Hoá',
       'description': 'Khu căn cứ cách mạng quan trọng thời kháng chiến.',
       'url': 'https://maps.app.goo.gl/h8BCSCJgFgYHQ3it7',
     },
     {
-      'image': 'https://hnm.1cdn.vn/2020/02/14/hanoimoi.com.vn-uploads-images-tuandiep-2020-02-14-_den_duom-01-.jpg',
+      'image':
+          'https://hnm.1cdn.vn/2020/02/14/hanoimoi.com.vn-uploads-images-tuandiep-2020-02-14-_den_duom-01-.jpg',
       'title': 'Đền Đuổm',
       'description': 'Ngôi đền thờ danh tướng Dương Tự Minh.',
       'url': 'https://maps.app.goo.gl/qGUatiwtLzJvJdFQ8',
     },
     {
-      'image': 'https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2023/3/18/1159235/Lang-Thai-Hai-Nha-Sa.jpg',
+      'image':
+          'https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2023/3/18/1159235/Lang-Thai-Hai-Nha-Sa.jpg',
       'title': 'Khu bảo tồn làng nhà sàn dân tộc sinh thái Thái Hải',
       'description': 'Bảo tồn văn hóa Tày – Nùng trong không gian sinh thái.',
       'url': 'https://maps.app.goo.gl/3EYMEzHa43MwNeCR9',
     },
     {
-      'image': 'https://r2.nucuoimekong.com/wp-content/uploads/ngoi-chua-noi-tieng-mien-tay.jpg',
+      'image':
+          'https://r2.nucuoimekong.com/wp-content/uploads/ngoi-chua-noi-tieng-mien-tay.jpg',
       'title': 'Chùa Hang',
-      'description': 'Ngôi chùa nổi tiếng linh thiêng và độc đáo trong hang đá.',
+      'description':
+          'Ngôi chùa nổi tiếng linh thiêng và độc đáo trong hang đá.',
       'url': 'https://maps.app.goo.gl/BcVxDV4ysknqpUox9',
     },
   ];
@@ -73,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> items = const [
     {
       'title': '1. Hỗ trợ an ninh',
-      'content': ''' 
+      'content': '''
         <h2>📞 Liên hệ khi cần hỗ trợ an ninh</h2>
 <p>Khi cần hỗ trợ về an ninh tại các khu vui chơi ở Thái Nguyên, bạn có thể liên hệ với:</p>
 
@@ -411,6 +419,57 @@ class _HomeScreenState extends State<HomeScreen> {
 
       '''
     },
+    {
+      'title': '5. Hỗ trợ di chuyển',
+      'content': '''
+<ul>
+  <li>
+    <strong>Taxi Mai Linh</strong> – 0208.6.25.25.25<br>
+    Đây là hãng taxi lớn, uy tín, hoạt động trên toàn quốc, có mặt tại nhiều điểm du lịch và trung tâm thành phố Thái Nguyên.
+  </li>
+  <li>
+    <strong>Taxi Bình An</strong> – 0208.3.54.54.54<br>
+    Hãng taxi phục vụ tốt tại thành phố và các huyện lân cận, giá cả hợp lý, hỗ trợ chở hàng nhẹ.
+  </li>
+  <li>
+    <strong>Taxi Thái Bảo</strong> – 0208.3.737.737<br>
+    Có nhiều xe, phục vụ cả đi nội tỉnh và ngoại tỉnh, được đánh giá có tài xế thân thiện.
+  </li>
+  <li>
+    <strong>Taxi Hoa Mai</strong> – 1900.9262<br>
+    Hoạt động mạnh ở khu vực các khu công nghiệp và khu dân cư, giá mềm, phục vụ nhanh.
+  </li>
+  <li>
+    <strong>Taxi Hà Lan</strong> – 0208.3.759.759<br>
+    Ngoài taxi truyền thống, hãng này còn có xe dịch vụ đưa đón sân bay, xe du lịch đường dài.
+  </li>
+  <li>
+    <strong>Taxi Đức Quỳnh</strong> – 0208.3.855.855<br>
+    Xe đời mới, nội thất sạch sẽ, thường phục vụ khách đi tỉnh hoặc đi tham quan.
+  </li>
+  <li>
+    <strong>Taxi Việt Bắc</strong> – 0208.3.658.658<br>
+    Là hãng taxi quen thuộc của người dân Thái Nguyên, có dịch vụ gọi xe qua điện thoại nhanh chóng.
+  </li>
+  <li>
+    <strong>Taxi Phú Lương Sao</strong> – 0208.3.676.888<br>
+    Phục vụ tốt tại khu vực Phú Lương và các vùng phụ cận, được đánh giá lái xe an toàn.
+  </li>
+  <li>
+    <strong>Taxi Phú Bình</strong> – 0208.3.568.568<br>
+    Giá cả phải chăng, phù hợp cho học sinh, sinh viên và người lao động.
+  </li>
+  <li>
+    <strong>Taxi Xanh SM (xe điện)</strong> – 1900.2088<br>
+    Hãng taxi sử dụng xe điện VinFast, không mùi xăng, sạch sẽ và thân thiện với môi trường.
+  </li>
+  <li>
+    <strong>Taxi G7 Thái Nguyên</strong> – 0208.3.65.65.65<br>
+    Mới gia nhập thị trường Thái Nguyên, có ứng dụng đặt xe tiện lợi, phục vụ nhanh.
+  </li>
+</ul>
+      '''
+    },
   ];
 
   bool get _isMobile {
@@ -421,7 +480,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _videoController = VideoPlayerController.asset('assets/bg.mp4')
+    _videoController = VideoPlayerController.asset('assets/main-bg.mp4')
       ..initialize().then((_) {
         _videoController.setLooping(true);
         _videoController.setVolume(0); // mute
@@ -438,7 +497,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               getFirstArea(),
-              const SizedBox(height: 100),
+              const SizedBox(height: 150),
               getSecondArea(),
               const SizedBox(height: 100),
               getThirdArea(),
@@ -469,7 +528,14 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           // Optional overlay
-          Container(color: Colors.black.withOpacity(0.4)),
+          FittedBox(
+            fit: BoxFit.cover,
+            child: Container(
+              width: _videoController.value.size.width,
+              height: _videoController.value.size.height,
+              color: Colors.black.withOpacity(0.4),
+            ),
+          ),
           // Foreground content
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 100.0),
@@ -477,7 +543,7 @@ class _HomeScreenState extends State<HomeScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Thái Nguyên",
+                  "Du lịch Thái Nguyên",
                   style: TextStyle(
                     fontSize: 34,
                     fontWeight: FontWeight.w900,
@@ -493,8 +559,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Vùng Đất Trà, Văn Hóa và Cơ Hội',
-                  style: TextStyle(fontSize: 20, height: 2, color: Colors.white),
+                  'Trải nghiệm xứ Trà, đậm đà bản sắc.',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    shadows: [
+                      Shadow(
+                        offset: Offset(0.7, 0.7),
+                        blurRadius: 0,
+                        color: Colors.black,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: 30),
                 Text(
@@ -504,8 +581,15 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
+                    fontWeight: FontWeight.w600,
                     color: Colors.white,
-                    height: 1.5,
+                    shadows: [
+                      Shadow(
+                        offset: Offset(0.7, 0.7),
+                        blurRadius: 0,
+                        color: Colors.black,
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -576,126 +660,130 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
   }
 
   Widget getSecondArea() {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        const double height = 600;
-        double viewportFraction = 0.8;
+    return LayoutBuilder(builder: (context, constraints) {
+      const double height = 600;
+      double viewportFraction = 0.8;
 
-        if (constraints.maxWidth > 600) {
-          viewportFraction = 0.5;
-        }
+      if (constraints.maxWidth > 600) {
+        viewportFraction = 0.5;
+      }
 
-        return Center(
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              CarouselSlider(
-                carouselController: _carouselController,
-                options: CarouselOptions(
-                  height: height,
-                  autoPlay: true,
-                  enlargeCenterPage: true,
-                  viewportFraction: viewportFraction,
-                ),
-                items: imageDataList.map((item) {
-                  return Builder(
-                    builder: (context) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Container(
-                          color: Colors.green.shade800,
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Expanded(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: Image.network(
-                                    item['image'],
-                                    fit: BoxFit.cover,
-                                    width: double.infinity,
-                                    filterQuality: FilterQuality.high,
-                                    errorBuilder: (context, error, stackTrace) =>
-                                    const Center(child: Text('Image load failed')),
-                                  ),
+      return Center(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            CarouselSlider(
+              carouselController: _carouselController,
+              options: CarouselOptions(
+                height: height,
+                autoPlay: true,
+                enlargeCenterPage: true,
+                viewportFraction: viewportFraction,
+              ),
+              items: imageDataList.map((item) {
+                return Builder(
+                  builder: (context) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(12),
+                      child: Container(
+                        color: Colors.green.shade800,
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            Expanded(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                  item['image'],
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  filterQuality: FilterQuality.high,
+                                  errorBuilder: (context, error, stackTrace) =>
+                                      const Center(
+                                          child: Text('Image load failed')),
                                 ),
                               ),
-                              const SizedBox(height: 12),
-                              Text(
-                                item['title'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                            ),
+                            const SizedBox(height: 12),
+                            Text(
+                              item['title'],
+                              style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
-                              const SizedBox(height: 4),
-                              Text(
-                                item['description'],
-                                style: const TextStyle(fontSize: 14),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 250,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        html.window.open(item['url'], '_blank');
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: Colors.orangeAccent,
-                                      ),
-                                      child: const Text(
-                                        'Khám phá thêm',
-                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800, fontSize: 18),
-                                      ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              item['description'],
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 250,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      html.window.open(item['url'], '_blank');
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.orangeAccent,
+                                    ),
+                                    child: const Text(
+                                      'Khám phá thêm',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w800,
+                                          fontSize: 18),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      );
-                    },
-                  );
-                }).toList(),
-              ),
-              Positioned(
-                left: 16,
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_back_ios, size: 32, color: Colors.white),
-                  onPressed: () {
-                    _carouselController.previousPage();
+                      ),
+                    );
                   },
-                  tooltip: 'Previous',
-                  style: IconButton.styleFrom(
-                    backgroundColor: Colors.black45,
-                    shape: const CircleBorder(),
-                  ),
+                );
+              }).toList(),
+            ),
+            Positioned(
+              left: 16,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back_ios,
+                    size: 32, color: Colors.white),
+                onPressed: () {
+                  _carouselController.previousPage();
+                },
+                tooltip: 'Previous',
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black45,
+                  shape: const CircleBorder(),
                 ),
               ),
-              Positioned(
-                right: 16,
-                child: IconButton(
-                  icon: const Icon(Icons.arrow_forward_ios, size: 32, color: Colors.white),
-                  onPressed: () {
-                    _carouselController.nextPage();
-                  },
-                  tooltip: 'Next',
-                  style: IconButton.styleFrom(
-                    backgroundColor: Colors.black45,
-                    shape: const CircleBorder(),
-                  ),
+            ),
+            Positioned(
+              right: 16,
+              child: IconButton(
+                icon: const Icon(Icons.arrow_forward_ios,
+                    size: 32, color: Colors.white),
+                onPressed: () {
+                  _carouselController.nextPage();
+                },
+                tooltip: 'Next',
+                style: IconButton.styleFrom(
+                  backgroundColor: Colors.black45,
+                  shape: const CircleBorder(),
                 ),
               ),
-            ],
-          ),
-        );
-      }
-    );
+            ),
+          ],
+        ),
+      );
+    });
   }
 
   Widget getThirdArea() {
@@ -767,11 +855,12 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
             final body = messageController.text;
             final email = dotenv.env['RESPONSE_MAIL'] ?? '';
 
-            var url = Uri.https('freeemailapi.vercel.app','/sendEmail/');
+            var url = Uri.https('freeemailapi.vercel.app', '/sendEmail/');
             await http.post(
-                url,
-                headers: {'Content-Type': 'application/json'},
-                body: jsonEncode({"toEmail": email, "subject": subject, "body": body}),
+              url,
+              headers: {'Content-Type': 'application/json'},
+              body: jsonEncode(
+                  {"toEmail": email, "subject": subject, "body": body}),
             );
 
             setState(() {
@@ -842,7 +931,10 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
-                        icon: const Icon(Icons.send, color: Colors.white,),
+                        icon: const Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
                         label: const Text(
                           'Gửi phản hồi',
                           style: TextStyle(fontSize: 16, color: Colors.white),
@@ -875,7 +967,10 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
               color: Colors.black,
             ),
           ),
-          const SizedBox(height: 8, width: double.infinity,),
+          const SizedBox(
+            height: 8,
+            width: double.infinity,
+          ),
           Text(
             'Email: $mail',
             style: const TextStyle(fontSize: 16, color: Colors.black),
@@ -928,7 +1023,8 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
                     dividerColor: Colors.transparent,
                   ),
                   child: ExpansionTile(
-                    tilePadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                    tilePadding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 12),
                     childrenPadding: const EdgeInsets.all(16),
                     iconColor: Colors.white,
                     collapsedIconColor: Colors.white,
@@ -938,10 +1034,9 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
                     title: Text(
                       item['title'],
                       style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
-                        color: Colors.white
-                      ),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 18,
+                          color: Colors.white),
                     ),
                     children: [
                       Container(
@@ -970,6 +1065,4 @@ Hãy đến Thái Nguyên – nơi hội tụ thiên nhiên, con người và ti
       ),
     );
   }
-
-
 }
