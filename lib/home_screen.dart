@@ -420,7 +420,7 @@ class _HomeScreenState extends State<HomeScreen> {
       '''
     },
     {
-      'title': '5. Hỗ trợ di chuyển',
+      'title': '6. Hỗ trợ di chuyển',
       'content': '''
 <ul>
   <li>
